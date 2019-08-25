@@ -35,22 +35,55 @@ import PyQt5
 기본 GUI 화면
 """
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication
-
-
-class ExWindow(QMainWindow):
-
+from PyQt5.QtWidgets import QApplication, QPushButton, QToolTip, QMainWindow, qApp, QAction # Button, etc.
+from PyQt5.QtGui import QIcon, QFont #for insert favicon
+from PyQt5.QtCore import QCoreApplication
+class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.init_ui()
 
-    def init_ui(self):
-        self.setGeometry(300, 300, 400, 300)
-        self.setWindowTitle('Main Window')
+        self.initUI()
+
+    def initUI(self):
+
+        ###QToolTip Section
+        QToolTip.setFont(QFont('SansSerif', 10)) # ToolTip (when mouse is hovering at a button)
+        self.setToolTip('This is a <b>QWidget</b> widget')
+
+        ###set exitAction at Menu
+        exitAction = QAction(QIcon('src/img/exit.png'), 'Exit', self)
+        # QAction(QIcon('Directory'), Displayed Words, inherited widget)
+        exitAction.setShortcut('Ctrl+Q') # object.setShortcut('Shortcut')
+        exitAction.setStatusTip('Exit application') #object.setStatusTip('send this to status bar')
+        exitAction.triggered.connect(qApp.quit) #quit app when exitAction is triggered
+
+        ###menuBar Section
+        menubar = self.menuBar() #Initialize menubar
+        menubar.setNativeMenuBar(False) # ?
+        fileMenu = menubar.addMenu('&File') #Make open File menu when (Alt+'F')ile
+        fileMenu.addAction(exitAction)
+
+        ###statusBar Section
+        self.statusBar().showMessage('Ready')
+        self.setGeometry(300,300,200,200)
+
+        ###QPushButton Section
+        btn = QPushButton('Quit', self) # QPushButton('Button's text', parent widget)
+        btn.setToolTip('This is a <b>QPushButton</b> widget')
+        btn.move(50,50)  # move Button
+        btn.resize(btn.sizeHint())  # ?
+        btn.clicked.connect(QCoreApplication.instance().quit)
+        # When button is clicked, "clicked" Signal is created. Clicked Signal is going to Applicaion's quit() method.
+
+        ###QTitle, Icon, move, resize, show Section
+        self.setWindowTitle('English Address Search Program')
+        self.setWindowIcon(QIcon('src/img/favicons.png'))
+        self.move(300,300)
+        self.resize(400,400)
         self.show()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = ExWindow()
+    ex = MyApp()
     sys.exit(app.exec_())
