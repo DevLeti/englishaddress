@@ -1,7 +1,6 @@
 import requests
 import PyQt5
 
-#Todo
 #ui 만들기
 
 # URL = 'http://www.juso.go.kr/addrlink/addrLinkApi.do'
@@ -31,9 +30,13 @@ import PyQt5
 
 # print(resJson['results']['juso'][0]['engAddr'])
 
-"""
-기본 GUI 화면
-"""
+# TODO This is Test.
+
+# TODO PYQT5로 GUI 만들기.
+# TODO 필수 변수 : 검색 단어.
+# TODO GUI Main 요소 : 검색 단어 input, Search Button, Result.
+# TODO GUI UpSide 요소 : Menu ( Quit, Setting ), etc ( Help, Credit )
+# TODO GUI DownSide 요소 : Status Bar ( Ready, Searching..., Ready, Error(404, 500), etc.. )
 import sys
 from PyQt5.QtWidgets import QApplication, QPushButton, QToolTip, QMainWindow, qApp, QAction # Button, etc.
 from PyQt5.QtGui import QIcon, QFont #for insert favicon
