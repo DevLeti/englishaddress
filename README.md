@@ -9,4 +9,4 @@ English Road Address by using OpenApi (<http://juso.go.kr/>)
 1. Python(Language, 3.7.x) - I made this with Python 3.7.3. That's the reason.
 2. PyQt5(Module) - For GUI.
 3. requests(Module) - For Requesting English Address to <http://juso.go.kr/>
-4. will be added when other dependancies are detected.
+4. will be added when other dependancies are required.
